@@ -1,0 +1,27 @@
+{
+  "name": "gigkeeper",
+  "version": "1.0.0",
+  "engines": {
+    "node": "10.16.0"
+  },
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColtonKayser/gigkeeper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ColtonKayser/gigkeeper/issues"
+  },
+  "homepage": "https://github.com/ColtonKayser/gigkeeper#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1"
+  }
+}
