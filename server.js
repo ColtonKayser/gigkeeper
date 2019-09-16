@@ -23,8 +23,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get('/', (req, res) =>{
-  res.send('Hello World!');
-});
+const gigsController = require('./controllers/gigs.js');
+app.use('/gigs', gigsController);
 
 app.listen(PORT, () => console.log("listening on port:", PORT));
