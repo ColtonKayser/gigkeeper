@@ -3,3 +3,11 @@
 body {
   font-family: 'Arvo';
 }
+
+.red {
+  background-color: rgb(205,92,92);
+}
+
+.green {
+  background-color: hsl(141, 71%, 48%);
+}

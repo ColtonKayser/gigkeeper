@@ -4,7 +4,7 @@
 <!-- get rid of one below when chart is fixed -->
 <div>
 
-  <table class="table is-responsive">
+  <table class="table is-responsive" >
      <thead>
        <tr>
          <th>Venue</th>
@@ -15,19 +15,21 @@
          <th>Total Work Hours</th>
          <th>Pay Per Hour</th>
          <th>Net Pay</th>
+         <th></th>
+         <th></th>
        </tr>
      </thead>
      <tbody ng-repeat="gig in ctrl.gigs">
-       <tr>
+       <tr ng-class="gig.netPay > 0 ? 'green' : 'red'">
          <td>{{gig.venue}}</td>
          <td>{{gig.date}}</td>
          <td>{{gig.contact}}</td>
          <td>${{gig.pay}}</td>
-         <td>${{(gig.travelDistance / gig.milesPerGallon) * gig.costOfGas}}</td>
-         <td>{{gig.gigLength + gig.travelTime}}</td>
+         <td>${{gig.gasExpense}}</td>
+         <td>{{gig.totalTime}}</td>
          <td>${{ (gig.pay - ((gig.travelDistance / gig.milesPerGallon) * gig.costOfGas)) / (gig.gigLength + gig.travelTime) }}</td>
-         <td>${{ gig.pay - ((gig.travelDistance / gig.milesPerGallon) * gig.costOfGas)}}</td>
-         <td><button class="button is-primary"
+         <td>${{ gig.netPay}}</td>
+         <td><button class="button is-primary is-inverted"
          ng-if="$index !== ctrl.indexOfEditFormToShow"
          ng-click="ctrl.indexOfEditFormToShow = $index"
          >Edit</button>
@@ -43,7 +45,7 @@
            <input class="input is-rounded" type="number" ng-model="ctrl.updatedMilesPerGallon" placeholder="Miles Per Gallon"/>
            <input style="margin-bottom: 10px; margin-top:10px;" class="button is-primary" type="submit" value="Update Gig" />
          </form></td>
-         <td><button class="button is-primary" ng-click="ctrl.deleteGig(gig)">Delete Gig</button></td>
+         <td><button class="button is-primary is-inverted" ng-click="ctrl.deleteGig(gig)">Delete Gig</button></td>
        </tr>
      </tbody>
    </table>

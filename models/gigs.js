@@ -9,7 +9,11 @@ const gigSchema = new mongoose.Schema({
     travelDistance: Number,
     travelTime: Number,
     costOfGas: Number,
-    milesPerGallon: Number
+    milesPerGallon: Number,
+    totalTime: Number,
+    gasExpense: Number,
+    payPerHour: Number,
+    netPay: Number
 });
 
 const Gigs = mongoose.model('Gig', gigSchema);

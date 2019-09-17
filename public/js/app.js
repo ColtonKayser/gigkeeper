@@ -4,6 +4,10 @@ app.controller('MyController', ['$http', function($http){
   const controller = this;
   this.indexOfEditFormToShow = null;
 
+  // const roundDown = (valueToRound) => {
+  //   return Math.floor(valueToRound)
+  // }
+
   // include path for partials
   this.includePath = 'partials/savedgigs.html';
   this.changeInclude = (path) => {
@@ -25,7 +29,11 @@ app.controller('MyController', ['$http', function($http){
         travelDistance: this.travelDistance,
         travelTime: this.travelTime,
         costOfGas: this.costOfGas,
-        milesPerGallon: this.milesPerGallon
+        milesPerGallon: this.milesPerGallon,
+        totalTime: (this.gigLength + this.travelTime),
+        gasExpense: ((this.travelDistance / this.milesPerGallon) * this.costOfGas),
+        payPerHour: (((this.pay - this.gasExpense) / this.totalTime)),
+        netPay: (this.pay - ((this.travelDistance / this.milesPerGallon) * this.costOfGas))
       }
     }).then(function(response){
       controller.getGigs();
@@ -40,6 +48,10 @@ this.getGigs = function(){
     method: 'GET',
     url: '/gigs',
   }).then(function(response){
+    // for (let i = 0; i < response.data.length; i++) {
+    //
+    // }
+
     controller.gigs = response.data;
   }, function(){
     console.log('error');
