@@ -2,41 +2,27 @@
 <html lang="en" dir="ltr" ng-app="MyApp">
   <head>
     <meta charset="utf-8">
-    <title></title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gig Keeper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
     <script src="js/app.js" charset="utf-8"></script>
     <link rel="stylesheet" href="/css/style.css">
 
     </script>
   </head>
-  <body ng-controller="MyController as ctrl">
-    <form ng-submit="ctrl.createGig()">
-      <input type="text" ng-model="ctrl.venue" placeholder="venue"/>
-      <input type="text" ng-model="ctrl.address" placeholder="address"/>
-      <input type="text" ng-model="ctrl.contact"  placeholder="contact"/>
-      <input type="text" ng-model="ctrl.pay" placeholder="pay"/>
-      <input type="submit" value="Add Gig" />
-    </form>
 
-    <div ng-repeat="gig in ctrl.gigs">
-      <p>Venue: {{gig.venue}}</p>
-      <p>Address: {{gig.address}}</p>
-      <p>Contact: {{gig.contact}}</p>
-      <p>Pay: {{gig.pay}}</p>
-      <button
-      ng-if="$index !== ctrl.indexOfEditFormToShow"
-      ng-click="ctrl.indexOfEditFormToShow = $index"
-      >Edit</button>
-      <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editGig(gig)">
-        <input type="text" ng-model="ctrl.updatedVenue" placeholder="Venue"/>
-        <input type="text" ng-model="ctrl.updatedAddress" placeholder="Address"/>
-        <input type="text" ng-model="ctrl.updatedContact"  placeholder="Contact"/>
-        <input type="text" ng-model="ctrl.updatedPay" placeholder="Pay"/>
-        <input type="submit" value="Update Gig" />
-      </form>
-      <button ng-click="ctrl.deleteGig(gig)">Delete Gig</button>
-    </div>
+
+  <body ng-controller="MyController as ctrl">
+
+  <!-- Nav -->
+  <nav class="navbar" role="navigation" aria-label="main navigation" ng-include="'partials/nav.html'"></nav>
+
+  <div class="container">
+    <div ng-include="ctrl.includePath"></div>
+  </div>
+
+
 
   </body>
 </html>

@@ -3,6 +3,14 @@ const app = angular.module('MyApp', []);
 app.controller('MyController', ['$http', function($http){
   const controller = this;
   this.indexOfEditFormToShow = null;
+
+  // include path for partials
+  this.includePath = 'partials/savedgigs.html';
+  this.changeInclude = (path) => {
+    this.includePath = 'partials/' + path + '.html';
+  }
+
+
 //create
   this.createGig = function(){
     $http({
@@ -12,7 +20,9 @@ app.controller('MyController', ['$http', function($http){
         venue: this.venue,
         address: this.address,
         contact: this.contact,
-        pay: this.pay
+        contactInfo: this.contactInfo,
+        pay: this.pay,
+        gigType: this.gigType
       }
     }).then(function(response){
       controller.getGigs();
@@ -57,12 +67,14 @@ this.editGig = function(gig){
       venue: this.updatedVenue,
       address: this.updatedAddress,
       contact: this.updatedContact,
-      pay: this.updatedPay
+      contactInfo: this.updatedContactInfo,
+      pay: this.updatedPay,
+      gigType: this.updatedGigType
     }
   }).then(
     function(response){
       controller.getGigs();
-      controller.indexOfEditFormToShow = null; 
+      controller.indexOfEditFormToShow = null;
     },
     function(error){
       console.log(error);

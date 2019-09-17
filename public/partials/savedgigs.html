@@ -1,0 +1,27 @@
+<h1 class="subtitle">Gigs</h1>
+<div ng-repeat="gig in ctrl.gigs">
+
+
+  <div class="box" style="margin-bottom: 20px;">
+  <p>Venue: {{gig.venue}}</p>
+  <p>Address: {{gig.address}}</p>
+  <p>Contact: {{gig.contact}}</p>
+  <p>Contact Info: {{gig.contactInfo}}</p>
+  <p>Pay: {{gig.pay}}</p>
+  <p>Gig Type: {{gig.gigType}}</p>
+  <button class="button is-primary"
+  ng-if="$index !== ctrl.indexOfEditFormToShow"
+  ng-click="ctrl.indexOfEditFormToShow = $index"
+  >Edit</button>
+  <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editGig(gig)">
+    <input class="input is-rounded" type="text" ng-model="ctrl.updatedVenue" placeholder="Venue"/>
+    <input class="input is-rounded" type="text" ng-model="ctrl.updatedAddress" placeholder="Address"/>
+    <input class="input is-rounded" type="text" ng-model="ctrl.updatedContact"  placeholder="Contact"/>
+    <input class="input is-rounded" type="text" ng-model="ctrl.updatedContactInfo" placeholder="Contact Information"/>
+    <input class="input is-rounded" type="text" ng-model="ctrl.updatedPay" placeholder="Pay"/>
+    <input class="input is-rounded" type="text" ng-model="ctrl.updatedGigType" placeholder="Gig Type"/>
+    <input class="button is-primary" type="submit" value="Update Gig" />
+  </form>
+  <button class="button is-primary" ng-click="ctrl.deleteGig(gig)">Delete Gig</button>
+  </div>
+</div>
