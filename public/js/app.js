@@ -18,11 +18,14 @@ app.controller('MyController', ['$http', function($http){
       url: '/gigs',
       data: {
         venue: this.venue,
-        address: this.address,
+        date: this.date,
         contact: this.contact,
-        contactInfo: this.contactInfo,
         pay: this.pay,
-        gigType: this.gigType
+        gigLength: this.gigLength,
+        travelDistance: this.travelDistance,
+        travelTime: this.travelTime,
+        costOfGas: this.costOfGas,
+        milesPerGallon: this.milesPerGallon
       }
     }).then(function(response){
       controller.getGigs();
@@ -65,11 +68,14 @@ this.editGig = function(gig){
     url: '/gigs/' + gig._id,
     data: {
       venue: this.updatedVenue,
-      address: this.updatedAddress,
+      date: this.updatedDate,
       contact: this.updatedContact,
-      contactInfo: this.updatedContactInfo,
       pay: this.updatedPay,
-      gigType: this.updatedGigType
+      gigLength: this.updatedGigLength,
+      travelDistance: this.updatedTravelDistance,
+      travelTime: this.updatedTravelTime,
+      costOfGas: this.updatedCostOfGas,
+      milesPerGallon: this.updatedMilesPerGallon
     }
   }).then(
     function(response){

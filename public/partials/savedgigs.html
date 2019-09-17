@@ -1,15 +1,73 @@
-<h1 class="subtitle">Gigs</h1>
-<div ng-repeat="gig in ctrl.gigs">
+<br />
+<h1 class="title has-text-centered">Gigs</h1>
+<!-- <div style="width: 30%;" ng-repeat="gig in ctrl.gigs"> -->
+<!-- get rid of one below when chart is fixed -->
+<div>
+
+  <table class="table is-responsive">
+     <thead>
+       <tr>
+         <th>Venue</th>
+         <th>Date</th>
+         <th>Contact</th>
+         <th>Gross Pay</th>
+         <th>Gas Expense</th>
+         <th>Total Work Hours</th>
+         <th>Pay Per Hour</th>
+         <th>Net Pay</th>
+       </tr>
+     </thead>
+     <tbody ng-repeat="gig in ctrl.gigs">
+       <tr>
+         <td>{{gig.venue}}</td>
+         <td>{{gig.date}}</td>
+         <td>{{gig.contact}}</td>
+         <td>${{gig.pay}}</td>
+         <td>${{(gig.travelDistance / gig.milesPerGallon) * gig.costOfGas}}</td>
+         <td>{{gig.gigLength + gig.travelTime}}</td>
+         <td>${{ (gig.pay - ((gig.travelDistance / gig.milesPerGallon) * gig.costOfGas)) / (gig.gigLength + gig.travelTime) }}</td>
+         <td>${{ gig.pay - ((gig.travelDistance / gig.milesPerGallon) * gig.costOfGas)}}</td>
+         <td><button class="button is-primary"
+         ng-if="$index !== ctrl.indexOfEditFormToShow"
+         ng-click="ctrl.indexOfEditFormToShow = $index"
+         >Edit</button>
+         <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editGig(gig)">
+           <input class="input is-rounded" type="text" ng-model="ctrl.updatedVenue" ng-value="ctrl.venue"/>
+           <input class="input is-rounded" type="text" ng-model="ctrl.updatedDate" placeholder="Date"/>
+           <input class="input is-rounded" type="text" ng-model="ctrl.updatedContact"  placeholder="Contact"/>
+           <input class="input is-rounded" type="number" ng-model="ctrl.updatedPay" placeholder="Pay"/>
+           <input class="input is-rounded" type="number" ng-model="ctrl.updatedGigLength" placeholder="Gig Length"/>
+           <input class="input is-rounded" type="number" ng-model="ctrl.updatedTravelDistance" placeholder="Travel Distance"/>
+           <input class="input is-rounded" type="number" ng-model="ctrl.updatedTravelTime" placeholder="Travel Time"/>
+           <input class="input is-rounded" type="number" ng-model="ctrl.updatedCostOfGas" placeholder="Cost Of Gas"/>
+           <input class="input is-rounded" type="number" ng-model="ctrl.updatedMilesPerGallon" placeholder="Miles Per Gallon"/>
+           <input style="margin-bottom: 10px; margin-top:10px;" class="button is-primary" type="submit" value="Update Gig" />
+         </form></td>
+         <td><button class="button is-primary" ng-click="ctrl.deleteGig(gig)">Delete Gig</button></td>
+       </tr>
+     </tbody>
+   </table>
 
 
-  <div class="box" style="margin-bottom: 20px;">
+
+
+
+
+
+
+  <!-- <div class="box has-text-centered" style="margin-bottom: 20px; width: 250px;">
   <p>Venue: {{gig.venue}}</p>
   <p>Address: {{gig.address}}</p>
   <p>Contact: {{gig.contact}}</p>
   <p>Contact Info: {{gig.contactInfo}}</p>
-  <p>Pay: {{gig.pay}}</p>
+  <p>Pay: ${{gig.pay}}</p>
+  <p>Expenses: ${{gig.expenses}}</p>
+  <p>Net Revenue: ${{gig.pay - gig.expenses}}</p>
   <p>Gig Type: {{gig.gigType}}</p>
-  <button class="button is-primary"
+
+
+  <!-- edit form -->
+  <!--<button class="button is-primary"
   ng-if="$index !== ctrl.indexOfEditFormToShow"
   ng-click="ctrl.indexOfEditFormToShow = $index"
   >Edit</button>
@@ -18,10 +76,11 @@
     <input class="input is-rounded" type="text" ng-model="ctrl.updatedAddress" placeholder="Address"/>
     <input class="input is-rounded" type="text" ng-model="ctrl.updatedContact"  placeholder="Contact"/>
     <input class="input is-rounded" type="text" ng-model="ctrl.updatedContactInfo" placeholder="Contact Information"/>
-    <input class="input is-rounded" type="text" ng-model="ctrl.updatedPay" placeholder="Pay"/>
+    <input class="input is-rounded" type="number" ng-model="ctrl.updatedPay" placeholder="Pay"/>
+    <input class="input is-rounded" type="number" ng-model="ctrl.updatedExpenses" placeholder="Expenses"/>
     <input class="input is-rounded" type="text" ng-model="ctrl.updatedGigType" placeholder="Gig Type"/>
-    <input class="button is-primary" type="submit" value="Update Gig" />
+    <input style="margin-bottom: 10px; margin-top:10px;" class="button is-primary" type="submit" value="Update Gig" />
   </form>
   <button class="button is-primary" ng-click="ctrl.deleteGig(gig)">Delete Gig</button>
   </div>
-</div>
+</div> -->
