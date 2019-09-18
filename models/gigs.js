@@ -13,7 +13,8 @@ const gigSchema = new mongoose.Schema({
     totalTime: Number,
     gasExpense: Number,
     payPerHour: Number,
-    netPay: Number
+    netPay: Number,
+    extraneousExpenses: Number
 });
 
 const Gigs = mongoose.model('Gig', gigSchema);

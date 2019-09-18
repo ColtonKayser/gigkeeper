@@ -32,8 +32,10 @@ app.controller('MyController', ['$http', function($http){
         milesPerGallon: this.milesPerGallon,
         totalTime: (this.gigLength + this.travelTime),
         gasExpense: ((this.travelDistance / this.milesPerGallon) * this.costOfGas),
-        payPerHour: (((this.pay - this.gasExpense) / this.totalTime)),
-        netPay: (this.pay - ((this.travelDistance / this.milesPerGallon) * this.costOfGas))
+        extraneousExpenses: this.extraneousExpenses,
+        totalExpense: (((this.travelDistance / this.milesPerGallon) * this.costOfGas) + this.extraneousExpenses),
+        payPerHour: (((this.pay - this.gasExpense - this.extraneousExpenses) / this.totalTime)),
+        netPay: ((this.pay - this.extraneousExpenses) - ((this.travelDistance / this.milesPerGallon) * this.costOfGas))
       }
     }).then(function(response){
       controller.getGigs();
@@ -87,7 +89,10 @@ this.editGig = function(gig){
       travelDistance: this.updatedTravelDistance,
       travelTime: this.updatedTravelTime,
       costOfGas: this.updatedCostOfGas,
-      milesPerGallon: this.updatedMilesPerGallon
+      milesPerGallon: this.updatedMilesPerGallon,
+      extraneousExpenses: this.updatedExtraneousExpenses,
+      netPay: ((this.updatedPay - this.updatedExtraneousExpenses) - ((this.updatedTravelDistance / this.updatedMilesPerGallon) * this.updatedCostOfGas)),
+      payPerHour: (((this.updatedPay - this.updatedGasExpense) / (this.updatedGigLength + this.updatedTravelTime)))
     }
   }).then(
     function(response){

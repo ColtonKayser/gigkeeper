@@ -12,6 +12,7 @@
          <th>Contact</th>
          <th>Gross Pay</th>
          <th>Gas Expense</th>
+         <th>Total Expenses</th>
          <th>Total Work Hours</th>
          <th>Pay Per Hour</th>
          <th>Net Pay</th>
@@ -26,26 +27,29 @@
          <td>{{gig.contact}}</td>
          <td>${{gig.pay}}</td>
          <td>${{gig.gasExpense}}</td>
+         <td>${{ (((gig.travelDistance / gig.milesPerGallon) * gig.costOfGas) + gig.extraneousExpenses) }}</td>
          <td>{{gig.totalTime}}</td>
          <td>${{ (gig.pay - ((gig.travelDistance / gig.milesPerGallon) * gig.costOfGas)) / (gig.gigLength + gig.travelTime) }}</td>
          <td>${{ gig.netPay}}</td>
          <td><button class="button is-primary is-inverted"
          ng-if="$index !== ctrl.indexOfEditFormToShow"
          ng-click="ctrl.indexOfEditFormToShow = $index"
+         style="color: black;"
          >Edit</button>
          <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editGig(gig)">
-           <input class="input is-rounded" type="text" ng-model="ctrl.updatedVenue" ng-value="ctrl.venue"/>
-           <input class="input is-rounded" type="text" ng-model="ctrl.updatedDate" placeholder="Date"/>
-           <input class="input is-rounded" type="text" ng-model="ctrl.updatedContact"  placeholder="Contact"/>
-           <input class="input is-rounded" type="number" ng-model="ctrl.updatedPay" placeholder="Pay"/>
-           <input class="input is-rounded" type="number" ng-model="ctrl.updatedGigLength" placeholder="Gig Length"/>
-           <input class="input is-rounded" type="number" ng-model="ctrl.updatedTravelDistance" placeholder="Travel Distance"/>
-           <input class="input is-rounded" type="number" ng-model="ctrl.updatedTravelTime" placeholder="Travel Time"/>
-           <input class="input is-rounded" type="number" ng-model="ctrl.updatedCostOfGas" placeholder="Cost Of Gas"/>
-           <input class="input is-rounded" type="number" ng-model="ctrl.updatedMilesPerGallon" placeholder="Miles Per Gallon"/>
-           <input style="margin-bottom: 10px; margin-top:10px;" class="button is-primary" type="submit" value="Update Gig" />
+           Venue: <input class="input is-rounded" type="text" ng-model="ctrl.updatedVenue" placeholder="Venue"/>
+           Date: <input class="input is-rounded" type="text" ng-model="ctrl.updatedDate" placeholder="Date"/>
+           Contact: <input class="input is-rounded" type="text" ng-model="ctrl.updatedContact"  placeholder="Contact"/>
+           Pay: <input class="input is-rounded" type="number" ng-model="ctrl.updatedPay" placeholder="Pay"/>
+           Gig Length: <input class="input is-rounded" type="number" ng-model="ctrl.updatedGigLength" placeholder="Gig Length"/>
+           Travel Distance: <input class="input is-rounded" type="number" ng-model="ctrl.updatedTravelDistance" placeholder="Travel Distance"/>
+           Travel Time: <input class="input is-rounded" type="number" ng-model="ctrl.updatedTravelTime" placeholder="Travel Time"/>
+           Cost of Gas: <input class="input is-rounded" type="number" ng-model="ctrl.updatedCostOfGas" placeholder="Cost Of Gas"/>
+           Miles Per Gallon: <input class="input is-rounded" type="number" ng-model="ctrl.updatedMilesPerGallon" placeholder="Miles Per Gallon"/>
+           Extraneous Expenses: <input class="input is-rounded" type="number" ng-model="ctrl.updatedExtraneousExpenses" placeholder="Extraneous Expenses"/>
+           <input style="margin-bottom: 10px; margin-top:10px; color: black;" class="button is-primary is-inverted" type="submit" value="Update Gig" />
          </form></td>
-         <td><button class="button is-primary is-inverted" ng-click="ctrl.deleteGig(gig)">Delete Gig</button></td>
+         <td><button class="button is-primary is-inverted" ng-click="ctrl.deleteGig(gig)" style="color: black;">Delete Gig</button></td>
        </tr>
      </tbody>
    </table>
