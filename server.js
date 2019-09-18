@@ -12,12 +12,14 @@ const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
+//db connection
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true});
 
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connnected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
+//use the public folder for index page
 app.use(express.static('public'));
 
 app.use(express.urlencoded({ extended: false }));

@@ -1,5 +1,6 @@
 <br />
 <h1 class="title has-text-centered">Gigs</h1>
+  <!-- Gig Table -->
   <table class="table is-responsive">
      <thead>
        <tr>
@@ -27,11 +28,13 @@
          <td>{{gig.totalTime}}</td>
          <td>${{ (gig.pay - ((gig.travelDistance / gig.milesPerGallon) * gig.costOfGas)) / (gig.gigLength + gig.travelTime) }}</td>
          <td>${{ gig.netPay}}</td>
+        <!-- Edit Button -->
          <td><button class="button is-primary is-inverted"
          ng-if="$index !== ctrl.indexOfEditFormToShow"
          ng-click="ctrl.indexOfEditFormToShow = $index"
          style="color: black; font-family: 'Arvo';"
          >Edit</button>
+        <!-- Edit Form -->
          <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editGig(gig)">
            Venue: <input class="input is-rounded" type="text" ng-model="ctrl.updatedVenue" placeholder="Venue"/>
            Date: <input class="input is-rounded" type="text" ng-model="ctrl.updatedDate" placeholder="Date"/>
@@ -45,6 +48,7 @@
            Extraneous Expenses: <input class="input is-rounded" type="number" ng-model="ctrl.updatedExtraneousExpenses" placeholder="Extraneous Expenses"/>
            <input style="margin-bottom: 10px; margin-top:10px; color: black; font-family: 'Arvo';" class="button is-primary is-inverted" type="submit" value="Update Gig" />
          </form></td>
+         <!-- Delete Button -->
          <td><button class="button is-primary is-inverted" ng-click="ctrl.deleteGig(gig)" style="color: black; font-family: 'Arvo';">Delete Gig</button></td>
        </tr>
      </tbody>
