@@ -4,6 +4,23 @@ body {
   font-family: 'Arvo';
 }
 
+footer {
+}
+
+#foot{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  /* margin: -75px auto; */
+  /* margin-bottom: 20px; */
+  background-color: hsl(171, 100%, 41%);
+  height: 50px;
+}
+
+#footer-text {
+  margin-top: 12px;
+}
+
 .red {
   background-color: rgb(205,92,92);
 }
