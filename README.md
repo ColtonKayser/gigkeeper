@@ -31,3 +31,38 @@ I wanted to make the user experience as simple as possible so I only put pertine
 
 A visual example of what I'm describing is below:
 ![Gig Calculator Chart](gigcalculator.png)
+
+## Technology Used
+The app uses an express server, a mongodb database, nodeJS, and AngularJS. What I learned during this app is that you can add math expressions in your callbacks, and also in your Angular Tags.
+
+Angular Tag:
+![Angular Tag](angulartag.png)
+
+I initially had all the expressions in angular tags, but that became unwieldy to read. Once I figured out that I could do math with key-pair objects in my routes, it was game on.
+
+Callback:
+![Data from callback](data.png)
+
+## CRUD
+The app features all of the CRUD routes, I'd be remiss to not mention that.
+
+## New Tech (For Me)
+This project was all about teaching yourself a new piece of technology. My initial build used VueJs, but after a long battle, I cut my losses, went with what I knew, and found a new CSS framework to style it with. Enter: Bulma.
+
+## Bulma
+I found my experience with Bulma to be pretty good. The syntax is very readable and each class is pretty self explanatory. Examples include:
+
+* <a class="button is-small">
+* <div class="content has-text-centered">
+* <div class="columns is-mobile">
+* <a class="delete is-medium"></a>
+
+The framework is column based, and mobile optimized. However, I found this to be partially true, as the table in my app does not interact well with the mobile sizing of the rest of the app. I found it difficult to align cards, and I think that the framework could use some more features or customization options. For example, I made my own footer because I wasn't in love with the layout of theirs, and I tried to modify add Ids to accommodate to no-avail. Documentation is well written, and I think it's a pretty good framework to pick up quickly.
+
+## Technical Challenges and Things to Work On
+
+* Getting the edit form to autofill the inputs with the current data.
+* Rounding the numbers to the nearest hundredth to give the full dollar look (ie - 42.30 instead of 42.308222728).
+
+## Final Thoughts
+This was the app I wanted to build six months ago when I started learning code. I'm really proud that I could whip up an idea I had with technology I didn't know existed half a year ago. I'm excited for the future, and I can't wait to see where coding takes me. 

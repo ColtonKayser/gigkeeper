@@ -32,19 +32,11 @@ app.controller("MyController", [
           costOfGas: this.costOfGas,
           milesPerGallon: this.milesPerGallon,
           totalTime: this.gigLength + this.travelTime,
-          gasExpense:
-            (this.travelDistance / this.milesPerGallon) * this.costOfGas,
+          gasExpense: (this.travelDistance / this.milesPerGallon) * this.costOfGas,
           extraneousExpenses: this.extraneousExpenses,
-          totalExpense:
-            (this.travelDistance / this.milesPerGallon) * this.costOfGas +
-            this.extraneousExpenses,
-          payPerHour:
-            (this.pay - this.gasExpense - this.extraneousExpenses) /
-            this.totalTime,
-          netPay:
-            this.pay -
-            this.extraneousExpenses -
-            (this.travelDistance / this.milesPerGallon) * this.costOfGas
+          totalExpense: (this.travelDistance / this.milesPerGallon) * this.costOfGas + this.extraneousExpenses,
+          payPerHour:(this.pay - this.gasExpense - this.extraneousExpenses) / this.totalTime,
+          netPay: this.pay - this.extraneousExpenses - (this.travelDistance / this.milesPerGallon) * this.costOfGas
         }
       }).then(
         function(response) {
